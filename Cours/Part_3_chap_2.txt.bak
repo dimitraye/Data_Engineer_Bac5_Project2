@@ -1,0 +1,38 @@
+Part 3 Chap 2 : Présentez une variable sous forme de tableau
+
+Il existe 4 cas de figure selon le type de variable étudiée.
+On manipule toujours :
+	la variable X (ex.  categ, quart_mois, montant...).
+	ses réalisations (x1,...,xn).
+	et ses modalités ou classes (a1,...,ak)
+
+
+
+	1 - Variables qualitatives
+		Exemple : categ (COURSES, LOYER, TRANSPORT, …).
+		
+		On construit un tableau avec :
+
+		la modalité,
+
+		son effectif ni = nombre d'occurences ,
+		
+		sa fréquence fi=ni/n
+	​	
+	
+	2 - Variables quantitatives discrètes
+		Exemple : quart_mois (1, 2, 3, 4).
+
+		Même tableau que pour les qualitatives, mais on ajoute la fréquence cumulée Fi
+	
+	
+	3 - Variables quantitatives continues
+		Exemple : montant (montants des transactions).
+
+		On regroupe les valeurs en classes (discrétisation).
+		Exemple avec des intervalles de 50 € :
+	
+	
+	4 - Variables qualitatives ordinales
+		Cas particulier des qualitatives :
+		On fait le même tableau que pour les qualitatives, mais en triant les modalités selon leur ordre naturel (petit → grand, mauvais → bon, etc.).

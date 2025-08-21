@@ -1,0 +1,45 @@
+Part 3 Chap 5 : Comprenez les mesures de dispersion
+
+• Idée générale
+	Mesurer la « dispersion », c’est quantifier à quel point les valeurs s’éloignent d’une valeur centrale (souvent la moyenne ou la médiane). Deux jeux de données avec la même moyenne peuvent être très différents si l’un est resserré et l’autre très éparpillé.
+
+• Pourquoi c’est utile
+	– Aide à dimensionner une marge de sécurité (ex. heure de départ).
+	– Complète les mesures de tendance centrale.
+	– Met en évidence des valeurs atypiques et l’hétérogénéité d’un groupe.
+
+• Variance (empirique)
+	– Moyenne des écarts à la moyenne… mais mis au carré pour éviter les signes plus/moins qui s’annulent.
+	– Unité au carré → difficile à interpréter directement.
+	– Sensible aux valeurs extrêmes.
+	– Version « corrigée » (non biaisée) utilisée couramment quand on estime avec un échantillon.
+
+• Écart-type
+	– Racine carrée de la variance → revient dans l’unité de la variable.
+	– Donne une idée de l’ampleur « typique » des écarts autour de la moyenne.
+	– Toujours sensible aux valeurs extrêmes.
+	– Pour comparer des variables de niveaux très différents, on peut utiliser le coefficient de variation (écart-type divisé par la moyenne). Attention si la moyenne est proche de zéro.
+
+• Quartiles et écart interquartile (IQR)
+	– Quartiles : coupent les données en quatre parties égales.
+	– IQR : distance entre le 1er et le 3e quartile → mesure de dispersion « au milieu » des données.
+	– Robuste aux valeurs extrêmes (elles n’influencent pas beaucoup les quartiles).
+	– Sert à détecter des valeurs atypiques dans un boxplot : tout ce qui est bien au-delà des moustaches.
+
+• Boîte à moustaches (boxplot)
+	– Représente Q1, médiane, Q3, plus des moustaches qui s’étendent jusqu’aux valeurs non extrêmes.
+	– Les points au-delà des moustaches sont marqués comme outliers.
+	– Idéal pour comparer rapidement plusieurs distributions entre groupes/catégories.
+
+• Mesures basées sur la valeur absolue
+	– Écart moyen absolu : moyenne des distances à une valeur centrale.
+	– MAD (median absolute deviation) : version avec la médiane des distances à la médiane → très robuste aux extrêmes.
+	– Alternatives intéressantes quand la distribution est très asymétrique ou contient des valeurs aberrantes.
+
+• Choisir la bonne mesure (règle pratique)
+	– Données « propres », distribution à peu près symétrique → variance et écart-type.
+	– Données avec outliers ou fortes asymétries → IQR et MAD.
+	– Comparaison de variabilité entre échelles différentes → coefficient de variation (si la moyenne n’est pas proche de zéro).
+
+• À retenir en une ligne
+	La dispersion complète la tendance centrale : variance/écart-type pour la finesse, IQR/MAD pour la robustesse, boxplot pour visualiser et comparer.

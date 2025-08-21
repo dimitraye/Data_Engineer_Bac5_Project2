@@ -1,0 +1,31 @@
+Part 3 Chap 7 : Familiarisez-vous avec les mesures de concentration
+
+	Mesures de concentration
+
+		Elles servent à mesurer si une ressource (argent, salaires, dépenses…) est bien répartie ou concentrée sur peu d’individus.
+
+	Courbe de Lorenz
+
+		Représente la répartition d’une variable (ex : revenus) dans une population.
+
+		Plus elle est proche de la diagonale, plus la répartition est égalitaire.
+
+		Plus elle s’éloigne, plus la répartition est inégalitaire.
+
+	Salaire médial
+
+		Point où 50 % de la masse salariale est répartie en dessous et 50 % au-dessus.
+
+		Différent du salaire médian (qui sépare les individus en deux groupes égaux).
+
+	Indice de Gini
+
+		Mesure numérique de l’inégalité basée sur la courbe de Lorenz.
+
+		Varie entre 0 (égalité parfaite) et 1 (inégalité maximale).
+
+	Autres expressions des inégalités
+
+		Exemple : “Les 20 % les plus riches possèdent 80 % de la richesse” (loi de Pareto).
+
+		Exemple : “Les 10 % les plus riches possèdent autant que les 50 % les plus pauvres”.

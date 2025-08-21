@@ -1,0 +1,66 @@
+Part 3 Chap 1 : Représentez la distribution empirique d'une variable
+
+La distribution empirique d’une variable = ensemble des valeurs/modalités prises par cette variable + leurs effectifs (ou fréquences).
+			
+				 Effectif d’une modalité
+	Fréquence = __________________________
+							n
+							
+	Variables qualitatives : 
+		# Effectifs
+		data['categ'].value_counts()
+
+		# Fréquences
+		data['categ'].value_counts(normalize=True)
+	
+		Graphiques :
+			import matplotlib.pyplot as plt
+
+			# Camembert
+			data["categ"].value_counts(normalize=True).plot(kind='pie')
+			plt.axis("equal")
+			plt.show()
+
+			# Diagramme en barres
+			data["categ"].value_counts(normalize=True).plot(kind='bar')
+			plt.show()
+
+					
+	Variables quantitatives discrètes : 
+		# Création quart_mois
+		data['quart_mois'] = [int((jour-1)*4/31)+1 for jour in data["date_operation"].dt.day]
+
+		# Diagramme en bâtons
+		data["quart_mois"].value_counts(normalize=True).plot(kind='bar', width=0.1)
+		plt.show()
+	
+	Variables quantitatives continues : 
+		# Histogramme simple
+		data["montant"].hist(density=True)
+		plt.show()
+
+		# Histogramme filtré (-100 à 100), 20 classes
+		data[data.montant.abs() < 100]["montant"].hist(density=True, bins=20)
+		plt.show()
+
+	
+	Fonction de répartition empirique (ECDF) : 
+		Alternative à l’histogramme → représentation en escalier.
+		Formule : 
+		
+		
+		import numpy as np
+		import matplotlib.pyplot as plt
+
+		x = np.sort(data["montant"])
+		y = np.arange(1, len(x)+1) / len(x)
+
+		plt.step(x, y, where="post")
+		plt.xlabel("Montant")
+		plt.ylabel("F_emp(x)")
+		plt.title("Fonction de répartition empirique")
+		plt.show()
+		
+	
+
+			

@@ -1,0 +1,107 @@
+Part 4 Chap 3 : Analysez la corrélation entre deux variables quantitatives
+
+1. Présentation des données bivariées
+
+	Diagramme de dispersion : pour deux variables quantitatives.
+
+	Tableau de contingence : pour deux variables qualitatives.
+
+	La combinaison variable quantitative + variable qualitative sera abordée plus tard.
+
+
+
+2. Visualiser la relation entre deux variables quantitatives
+
+	Exemple :
+		uestion : Êtes-vous moins dépensier lorsque vous avez peu d’argent sur votre compte ?
+
+	Variables étudiées :
+
+		solde avant opération
+
+		montant de l’opération
+
+	Méthode :
+
+		Tracer un diagramme de dispersion : chaque point représente une opération.
+
+		Observer la répartition des points. Si le nuage est très dispersé, il est difficile de voir une tendance.
+
+
+
+3. Alternative : agrégation par classes
+
+	Découper la variable solde en tranches (par exemple tous les 500 euros).
+
+	Pour chaque tranche, tracer une boîte à moustaches du montant.
+
+	Afficher le nombre d’opérations par tranche, car certaines tranches peuvent contenir très peu de points.
+
+	Observation : les tranches peu peuplées ne sont pas représentatives. La corrélation peut être difficile à interpréter visuellement.
+
+
+
+4. Indicateur numérique : la covariance
+
+	Pour quantifier la corrélation :
+
+	Calculer combien chaque valeur est supérieure ou inférieure à la moyenne pour le solde et le montant.
+
+	Multiplier ces différences pour chaque opération.
+
+	Faire la moyenne de ces produits pour toutes les opérations.
+
+	Résultat positif : corrélation positive
+
+	Résultat proche de zéro : pas de corrélation
+
+	Résultat négatif : corrélation négative
+
+	Cette moyenne correspond à la covariance empirique.
+
+	Propriétés utiles :
+
+		Symétrie : la covariance de X avec Y est la même que celle de Y avec X
+
+		Addition : si une variable est la somme de deux autres, sa covariance se calcule en additionnant les covariances correspondantes
+
+
+
+5. Coefficient de corrélation de Pearson
+
+	Pour obtenir un indicateur compris entre -1 et 1 :
+
+		Diviser la covariance par le produit des écarts-types des deux variables.
+
+	Interprétation :
+
+		positif : corrélation positive
+
+		négatif : corrélation négative
+
+		proche de zéro : pas de corrélation
+
+		Ce coefficient ne détecte que les relations linéaires.
+
+	Exemple en Python :
+
+	import scipy.stats as st
+	import numpy as np
+
+	# Coefficient de corrélation
+	print(st.pearsonr(depenses["solde_avt_ope"], -depenses["montant"])[0])
+
+	# Covariance
+	print(np.cov(depenses["solde_avt_ope"], -depenses["montant"], ddof=0)[1,0])
+
+
+
+6. En résumé
+
+	Le scatter plot permet un aperçu visuel.
+
+	La covariance et le coefficient de Pearson donnent une mesure numérique.
+
+	Le coefficient de Pearson mesure uniquement les relations linéaires et varie entre -1 et 1.
+
+	Le signe indique le sens de la corrélation.

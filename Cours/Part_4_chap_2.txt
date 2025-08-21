@@ -1,0 +1,58 @@
+Part 4 Chap 2 : Recherchez les corrélations
+
+1. Notion de corrélation
+
+	Définition : Deux variables sont corrélées si connaître la valeur de l’une permet d’avoir une indication (plus ou moins précise) sur la valeur de l’autre.
+
+	Exemple : Âge d’un client et intérêt pour un album. Connaître l’âge peut aider à estimer l’intérêt.
+
+⚠️ Attention à la causalité
+
+	Corrélation ≠ lien de cause à effet.
+
+	Une corrélation peut être due à :
+
+	A cause B (rare sans expérimentation)
+
+	B cause A (inverse)
+
+	Un facteur C commun à A et B
+
+	Pure coïncidence (corrélation fallacieuse)
+
+	Pour établir une causalité réelle, il faut une expérimentation contrôlée.
+
+2. Exemple concret : boisson préférée et café fréquenté
+
+	Variables : nom café et boisson préférée
+
+	Distribution globale de boisson préférée :
+
+	Café : 50 %
+
+	Thé : 30 %
+
+	Autres : 20 %
+
+	Observation dans un café (Salon de thé Chez Luc) : 9 thé, 1 café, 0 autre.
+
+	Interprétation : La boisson préférée dépend du café fréquenté → les variables ne sont pas indépendantes.
+
+3. Concepts clés
+
+	Effectif conjoint nij : nombre d’individus correspondant simultanément à la valeur i de la première variable et à la valeur j de la deuxième.
+
+	Distribution conjointe empirique : ensemble des effectifs conjoints pour toutes les combinaisons de valeurs.
+
+	Distribution marginale empirique : somme des effectifs sur une variable (ligne ou colonne « TOTAL »).
+
+	Distribution conditionnelle empirique : distribution d’une variable pour une valeur fixée de l’autre variable.
+
+Exemple
+
+	| Café / Boisson | Café | Thé | Autres | TOTAL |
+	| -------------- | ---- | --- | ------ | ----- |
+	| Chez Luc       | 1    | 9   | 0      | 10    |
+	| Autres cafés   | ...  | ... | ...    | ...   |
+	| TOTAL          | 50   | 30  | 20     | 100   |
+

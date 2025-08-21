@@ -1,0 +1,37 @@
+Part 3 Chap 6 : Appréhendez les mesures de forme
+
+Pourquoi les mesures de forme ?
+
+	La moyenne et l’écart-type ne suffisent pas pour décrire une distribution.
+
+	Deux distributions peuvent avoir la même moyenne et le même écart-type mais une forme différente.
+
+	Les mesures de forme servent à décrire l’asymétrie (skewness) et l’aplatissement (kurtosis).
+
+Le Skewness (asymétrie)
+
+	Skewness = 0 : distribution symétrique.
+
+	Skewness > 0 : distribution étalée à droite, moyenne supérieure à la médiane.
+
+	Skewness < 0 : distribution étalée à gauche, moyenne inférieure à la médiane.
+
+Exemple en Python : data['montant'].skew()
+
+	Le Kurtosis (aplatissement)
+
+	Kurtosis = 0 : aplatissement similaire à la loi normale.
+
+	Kurtosis > 0 : distribution plus concentrée au centre et avec des valeurs extrêmes.
+
+	Kurtosis < 0 : distribution plus aplatie, valeurs plus dispersées.
+
+	Exemple en Python : data['montant'].kurtosis()
+
+Résumé
+
+	Skewness mesure l’asymétrie.
+
+	Kurtosis mesure l’aplatissement.
+
+	Ces mesures complètent la moyenne et l’écart-type pour décrire la forme d’une distribution.

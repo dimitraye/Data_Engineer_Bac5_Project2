@@ -1,0 +1,8 @@
+Part 4 Chap 2 : Recherchez les corrélations
+
+| Café / Boisson | Café | Thé | Autres | TOTAL |
+| -------------- | ---- | --- | ------ | ----- |
+| Chez Luc       | 1    | 9   | 0      | 10    |
+| Autres cafés   | ...  | ... | ...    | ...   |
+| TOTAL          | 50   | 30  | 20     | 100   |
+

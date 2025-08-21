@@ -1,0 +1,33 @@
+Part 1 Chap 2 : Découvrez les statistiques : Vocaubulaire et tour d'horizon
+
+Statistiques : Le fait do'bserver un phénomène et de le décrire
+Probabilités : Modélisation des observation, essayer de trouver les lois mathématiques qui sont capables de générer les données que l'on observe.
+
+Statistiques Univariées : 
+	Étude d’une seule variable, chaque variable de l’échantillon étant analysée indépendamment.
+
+Statistiques Bivariées  :
+	Étude conjointe de deux variables, afin d’examiner les relations entre elles.
+	
+	
+Individus : Les unités d’observation étudiées (objets, personnes, animaux, mesures physiques, etc.).
+
+Caractère / variable : Les caractéristiques observées sur les individus (par exemple, l’âge, le poids, la couleur, etc.).
+
+Population : L’ensemble des individus que l’on souhaite étudier. Sa taille est souvent notée N.
+
+Echantillon : Un sous-ensemble d’individus prélevés dans la population, sur lesquels on effectue des observations. Sa taille est notée n.
+
+Jeu de données / data set : L’ensemble des informations collectées sur les individus de l’échantillon, généralement présenté sous forme de tableau (lignes = individus, colonnes = variables).
+
+
+Statistiques descriptives : Méthodes qui consistent à résumer, présenter et décrire les données (graphiques, moyennes, médianes, écarts-types, etc.).
+
+Analyse dimensionnelle : Prolongement des statistiques descriptives, qui consiste à analyser les relations entre 3 variables ou plus grâce à des techniques spécifiques d’exploration de données.
+
+Statistique Inférencielle : Méthodes permettant de tirer des conclusions sur une population entière à partir de l’analyse d’un échantillon (estimateurs, tests statistiques, intervalles de confiance, etc.).
+
+Modélisation statistique : Formalisation des observations par des règles ou modèles probabilistes. Elle permet de décrire un phénomène et de faire des prédictions ou prévisions.
+
+ 
+

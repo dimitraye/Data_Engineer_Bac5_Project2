@@ -1,0 +1,19 @@
+Part 1 Chap 3 : Découvrez les 4 types de variables
+
+Variables : Quantitatives : 
+	Variables numériques exprimant une quantité sur laquelle les opérations arithmétiques (somme, moyenne, etc.) ont un sens. Elles se divisent en discrètes et continues.
+
+Variables Qualitatives : 
+	Variables décrivant une catégorie ou un groupe d’appartenance. Elles prennent des valeurs appelées modalités, qui peuvent être des mots ou un code numérique sans signification arithmétique. Elles se divisent en nominales et ordinales.
+
+Variables Nominales : 
+	Variables qualitatives dont les modalités n’ont pas d’ordre particulier (ex. : couleur des yeux, identifiant d’opération, ville de résidence).
+
+Variables Ordinales : 
+	Variables qualitatives dont les modalités peuvent être hiérarchisées ou ordonnées (ex. : notes à un examen : passable / bien / très bien ; niveau de satisfaction : faible / moyen / élevé).
+	
+Variables discrètes : 
+	Variables quantitatives qui ne peuvent prendre qu’un nombre fini ou dénombrable de valeurs distinctes (ex. : nombre d’enfants dans une famille, nombre de pages d’un livre).
+
+Variables continues : 
+	Variables quantitatives qui peuvent prendre un très grand nombre (théoriquement infini) de valeurs possibles dans un intervalle (ex. : taille, poids, montant d’une dépense).

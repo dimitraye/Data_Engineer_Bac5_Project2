@@ -1,0 +1,47 @@
+Part 2 Chap 1 : Repérez els différents types d'erreurs
+
+Identifiez les différents types d'erreurs : 
+	Valeur Manquante : 
+		Une case du jeu de données n’est pas renseignée (champ vide).
+	
+	Erreur Lexicale : 
+		La valeur saisie n’appartient pas au vocabulaire attendu (ex. : "24" dans la colonne Pays).
+	
+	Erreur d'irrégularité : 
+		La même information est représentée de façon incohérente dans le jeu de données (ex. : 153 cm alors que les autres tailles sont données en m).
+	
+	Erreur de formatage : 
+		La valeur n’est pas écrite selon le format attendu (ex. : deux adresses e-mail dans la même case, ou une date écrite "12 sept. 1984" au lieu de "12/09/1984").
+	
+	Doublon : 
+		Un même individu apparaît plusieurs fois dans le jeu de données (ex. : Samuel présent deux fois avec la même adresse e-mail).
+	
+	Erreur de contradiction : 
+		Deux valeurs associées au même individu se contredisent (ex. : Samuel avec une taille de 1,67 m sur une ligne et 1,45 m sur l’autre).
+	
+	Outlier / Valeur extrème : 
+		Une valeur très différente des valeurs habituelles observées (ex. : une taille de 3,45 m pour un individu).
+	
+	
+
+Gérez les differentes d'erreurs : 
+	Valeurs manquantes : 
+		à traiter spécifiquement (imputation, suppression, ou garder en l’état selon les besoins).
+
+	Erreur lexicale : 
+		vérifier la valeur par rapport à un dictionnaire (liste des valeurs autorisées).
+
+	Erreur d’irrégularité : 
+		harmoniser les formats et unités (ex. convertir toutes les tailles en mètres).
+
+	Erreur de formatage : 
+		corriger selon les besoins de l’analyse (choisir une seule adresse e-mail, imposer un format de date uniforme, etc.).
+
+	Doublons : 
+		repérer grâce à une clé unique (ex. e-mail) et décider de conserver une seule ligne ou de fusionner les informations.
+
+	Erreur de contradiction : 
+		vérifier les sources, choisir la valeur la plus plausible ou marquer la donnée comme manquante.
+
+	Outliers : 
+		à analyser au cas par cas : soit les corriger, soit les supprimer, soit les garder s’ils ont un sens réel (valeurs atypiques vs valeurs aberrantes).

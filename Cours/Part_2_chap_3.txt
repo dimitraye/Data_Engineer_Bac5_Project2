@@ -1,0 +1,62 @@
+Part 2 Chap 3 : Nettoyer vos données avec Python
+
+Soit des données chargées : 
+
+	import pandas as pd
+	import numpy as np
+	import re
+
+	# Charger le fichier
+	data = pd.read_csv("personnes.csv")
+
+	# Affichage (petit dataset seulement)
+	print(data)
+
+	# Afficher un aperçu
+	print(data.head())   # 5 premières lignes
+	print(data.tail())   # 5 dernières lignes
+		
+
+Détecter les erreurs
+
+	Valeurs manquantes :
+		data.isnull().sum()
+		
+	Doublons : 
+		data.loc[data['email'].duplicated(keep=False), :]
+	
+	Valeurs extrêmes (outliers) :
+		Méthodes possibles : écart interquartile, Z-score.
+	
+	Autres erreurs (lexicales, formatage, irrégularités) :
+		souvent via des fonctions personnalisées, regex, ou contraintes de validation.
+		
+Traiter les erreurs
+	
+	Pays invalides : 
+		VALID_COUNTRIES = ['France', "Côte d'ivoire", 'Madagascar', 'Bénin', 'Allemagne', 'USA']
+
+		mask = ~data['pays'].isin(VALID_COUNTRIES)
+		data.loc[mask, 'pays'] = np.NaN
+		
+	E-mails multiples : 
+		# Ne garder que le premier email en cas de doublon
+		data['email'] = data['email'].str.split(',', n=1, expand=True)[0]
+		
+	Nettoyer la taille : 
+		_Conversion en numérique :
+			data['taille'] = data['taille'].str[:-1]  # enlever le "m" à la fin
+			data['taille'] = pd.to_numeric(data['taille'], errors='coerce')  # convertir
+		
+		
+		_Remplacer les valeurs manquantes par la moyenne :
+			data.loc[data['taille'].isnull(), 'taille'] = data['taille'].mean()
+			
+	Dates de naissance :
+		data['date_naissance'] = pd.to_datetime(
+			data['date_naissance'], 
+			format='%d/%m/%Y', 
+			errors='coerce'
+		)
+		
+	

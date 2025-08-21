@@ -1,0 +1,57 @@
+Part 3 Chap 4 : Présentez une variable sous forme de tableau
+
+Les 3 mesures de tendance centrale (les « 3 M ») :
+
+	Mode
+
+		La valeur la plus fréquente.
+
+		Pour les variables continues, on parle de classe modale (intervalle le plus fréquent).
+
+		Une distribution peut être unimodale, bimodale ou plurimodale.
+
+	Moyenne
+
+		Le centre de gravité des valeurs.
+
+		Formule : somme des valeurs / nombre de valeurs.
+
+		Très utilisée mais sensible aux valeurs extrêmes (outliers).
+
+		Exemple : si une valeur est très éloignée, elle « déséquilibre » la moyenne.
+
+	Médiane
+
+		La valeur qui sépare les données en deux groupes égaux (50 % au-dessus, 50 % en dessous).
+
+		Plus robuste que la moyenne face aux valeurs extrêmes.
+
+		Cas impair → la valeur du milieu.
+
+		Cas pair → la moyenne des deux valeurs centrales.
+
+	Sur un histogramme :
+
+		Mode = le sommet de la distribution.
+
+		Moyenne = le centre de gravité.
+
+		Médiane = la coupure de la surface en deux parties égales.
+
+	Exemple concret (opérations bancaires) :
+
+		Moyenne = 2,87 € → difficile à interpréter à cause de grosses variations.
+
+		Médiane = -9,6 € → montre qu’il y a plus de dépenses que de rentrées d’argent.
+
+		Mode = -1,6 € → la valeur la plus fréquente, souvent des petites dépenses courantes.
+
+	Ces 3 mesures donnent des angles différents sur la même variable. Quand elles divergent beaucoup, c’est le signe que la distribution est asymétrique ou hétérogène.
+
+En résumé simple :
+
+Mode → le plus fréquent.
+
+Moyenne → le centre de gravité.
+
+Médiane → la valeur centrale.

@@ -1,0 +1,36 @@
+Part 4 Chap 1 : Comprenez les enjeux de l’analyse bivariée
+
+
+	Pourquoi l’analyse bivariée est-elle importante ?
+
+		Plus d’informations qu’avec l’univariée : Deux variables analysées séparément ne suffisent pas à comprendre leur interaction. Par exemple, connaître la distribution des âges et la distribution de l’intérêt pour un album ne dit rien sur qui aime réellement cet album selon son âge.
+
+		Prendre de meilleures décisions métier : En e-commerce, par exemple, cela permet de cibler les recommandations de produits selon le profil des clients.
+
+		Comprendre les comportements combinés : Comme dans l’exemple du quiz, savoir quelles questions sont souvent ratées ensemble peut révéler si certaines questions sont trop difficiles ou redondantes.
+
+	Les outils principaux
+
+	1 - Diagramme de dispersion (scatterplot)
+
+		Chaque point = un individu
+
+		Axe X = première variable, Axe Y = deuxième variable
+
+		Permet de visualiser rapidement une tendance ou une relation linéaire / non linéaire
+
+	2 - Analyse conditionnelle
+
+		Ex. : « Sachant qu’un étudiant a raté la question 2, quelle est la probabilité qu’il ait raté la question 3 ? »
+
+		Permet d’étudier la dépendance entre variables, pas seulement les distributions marginales.
+
+	L’idée clé
+
+		L’analyse bivariée répond à des questions du type :
+
+		« Si X est grand, Y a-t-il tendance à être grand ou petit ? »
+
+		« Les individus avec un certain profil ont-ils un comportement particulier sur une autre variable ? »
+
+		Autrement dit, elle permet de comprendre l’effet d’une variable sur une autre et de faire des recommandations concrètes basées sur les données.

@@ -1,0 +1,106 @@
+Part 4 Chap 5 : Analysez une variable quantitative et une qualitative par ANOVA
+
+1 - Questions à se poser
+
+	Avant toute analyse, il faut se demander :
+
+		Les moyennes du montant diffèrent-elles selon les catégories ?
+
+		Quelle est la force de la corrélation entre la variable qualitative et la variable quantitative ?
+
+		Quelle part de la variation totale des montants peut être expliquée par la variable qualitative ?
+
+	Exemples de questions concrètes :
+
+		Les dépenses sont-elles plus élevées le week-end qu’en semaine ?
+
+		Les montants varient-ils selon la catégorie (transport, courses, loyer…) ?
+
+		Le solde est-il plus faible en fin de mois qu’en début de mois ?
+	
+
+
+2 - Visualisation : Boxplot
+
+	Pour représenter une variable quantitative selon une variable qualitative :
+
+		Utiliser un boxplot.
+
+		Chaque boîte représente la distribution d’une modalité de la variable qualitative.
+
+		La moyenne est souvent représentée par un point (souvent rouge).
+
+		La médiane est la ligne à l’intérieur de la boîte.
+
+	Exemple de code :
+	
+		X = "categ"  # qualitative
+		Y = "montant"  # quantitative
+
+		sous_echantillon = data[data["montant"] < 0].copy()
+		sous_echantillon["montant"] = -sous_echantillon["montant"]
+		sous_echantillon = sous_echantillon[sous_echantillon["categ"] != "LOYER"]
+
+		modalites = sous_echantillon[X].unique()
+		groupes = [sous_echantillon[sous_echantillon[X]==m][Y] for m in modalites]
+
+		medianprops = {'color':"black"}
+		meanprops = {'marker':'o', 'markeredgecolor':'black','markerfacecolor':'firebrick'}
+
+		plt.boxplot(groupes, labels=modalites, showfliers=False, medianprops=medianprops, 
+					vert=False, patch_artist=True, showmeans=True, meanprops=meanprops)
+		plt.show()
+
+	On voit déjà des différences de montants selon les catégories.
+	
+
+3 - Modélisation : ANOVA
+
+	On suppose que chaque montant est une moyenne globale ajustée par la catégorie plus une erreur.
+
+	L’ordinateur estime :
+
+		moyenne globale = moyenne de tous les montants
+
+		ajustement de la catégorie = moyenne de la catégorie − moyenne globale
+
+
+
+
+4 - Évaluation : rapport de corrélation η²
+
+	Calculer la proportion de la variation expliquée par les catégories avec eta_squared.
+
+	def eta_squared(x, y):
+		moyenne_y = y.mean()
+		classes = [{'ni': len(y[x==classe]), 'moyenne_classe': y[x==classe].mean()} for classe in x.unique()]
+		SCT = sum([(yj - moyenne_y)**2 for yj in y])
+		SCE = sum([c['ni'] * (c['moyenne_classe'] - moyenne_y)**2 for c in classes])
+		return SCE / SCT
+
+	eta_squared(sous_echantillon[X], sous_echantillon[Y])
+
+
+	Résultat proche de 0 → pas de lien
+
+	Résultat proche de 1 → forte différence entre catégories
+
+
+5 - Interprétation
+
+	η2=0 → pas de lien entre la variable qualitative et le montant
+
+	η2=1→ toutes les catégories ont des montants très différents, sans variation intra-catégorie
+
+	Valeurs intermédiaires → un lien partiel, ce qui est souvent réaliste.
+
+
+Résumé pratique :
+
+	1.Boxplot pour visualiser la distribution par catégorie
+
+	2.Modèle ANOVA : Y=μ+αi+ϵ
+
+	3.Calcul de η2 pour quantifier la corrélation
+
+	4.Interprétation : plus η2 est grand, plus la variable qualitative influence la variable quantitative

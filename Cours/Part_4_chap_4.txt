@@ -1,0 +1,123 @@
+Part 4 Chap 4 : Analysez deux variables quantitatives par régression linéaire
+
+
+
+	Au chapitre précédent, nous avons étudié la corrélation entre deux variables quantitatives. Nous allons maintenant aller plus loin avec deux autres variables : attente et montant.
+
+	La variable attente correspond au nombre de jours écoulés entre une opération et la précédente de catégorie COURSES. Par exemple, si vous faites vos courses tous les 7 jours, la moyenne de la variable attente sera de 7.
+
+	Hypothèse : plus vous attendez pour faire les courses, plus votre montant sera élevé. On s’attend donc à ce que l’attente et le montant soient positivement liés.
+
+
+
+	Calcul de la variable attente
+
+	Voici un code pour créer cette variable :
+		import datetime as dt
+
+		# Sélection du sous-échantillon
+		courses = data[data.categ == "COURSES"]
+
+		# Tri des opérations par date
+		courses = courses.sort_values("date_operation")
+
+		# Montants en positif
+		courses["montant"] = -courses["montant"]
+
+		# Calcul de la variable attente
+		r = []
+		last_date = dt.datetime.now()
+
+		for i, row in courses.iterrows():
+			days = (row["date_operation"] - last_date).days
+			if days == 0:
+				r.append(r[-1])
+			else:
+				r.append(days)
+			last_date = row["date_operation"]
+
+		courses["attente"] = r
+		courses = courses.iloc[1:,]
+
+		# Regroupement par date
+		a = courses.groupby("date_operation")["montant"].sum()
+		b = courses.groupby("date_operation")["attente"].first()
+		courses = pd.DataFrame({"montant": a, "attente": b})
+
+
+	Modélisation avec régression linéaire
+
+	Nous voulons maintenant estimer le prix moyen des produits consommés par jour et la quantité de stock que nous achetons à chaque course.
+
+	On suppose :
+
+		1.Vous achetez des produits consommés avant la prochaine course.
+
+		2.Vous achetez des produits de type stock pour plus tard.
+
+		3.Vous achetez rarement des produits non consommables (exemple : une fourchette).
+
+	Si on note :
+
+		a : prix moyen des produits consommés par jour
+
+		b : prix moyen des produits de type 2 et 3 par course
+
+		x : nombre de jours depuis la dernière course
+
+		y : montant du ticket
+
+	Alors le montant peut être estimé par : montant = a * x + b + erreur
+
+	L'erreur traduit le fait que le montant réel peut varier autour de ce calcul simple. Ce modèle est appelé régression linéaire.
+
+	Estimation de a et b
+	Nous voulons choisir a et b pour minimiser l'erreur. La méthode la plus utilisée est la méthode des moindres carrés ordinaire. Le code pour obtenir les estimations est :
+
+
+		import statsmodels.api as sm
+
+		Y = courses['montant']
+		X = courses[['attente']]
+		X = X.copy()
+		X['intercept'] = 1.0
+
+		result = sm.OLS(Y, X).fit()
+		a, b = result.params['attente'], result.params['intercept']
+
+
+	Pour afficher la droite de régression sur un graphique :
+
+		import matplotlib.pyplot as plt
+		import numpy as np
+
+		plt.plot(courses.attente, courses.montant, "o")
+		plt.plot(np.arange(15), [a*x + b for x in np.arange(15)])
+		plt.xlabel("attente")
+		plt.ylabel("montant")
+		plt.show()
+
+
+
+	Analyse de la qualité du modèle
+	On compare deux méthodes :
+
+		Remplacer un montant manquant par la moyenne : variation autour de la moyenne élevée.
+
+		Utiliser le modèle de régression : variation autour de la droite réduite.
+
+		Le pourcentage de variation expliquée par le modèle se mesure par le coefficient de détermination R2, qui indique combien de la variation du montant est expliquée par l’attente.
+
+		Attention aux outliers : quelques valeurs très élevées peuvent fausser le modèle. En les retirant, les estimations changent fortement, montrant que la régression est sensible aux valeurs extrêmes.
+
+	En résumé
+
+		La régression linéaire établit une relation entre une variable expliquée et une ou plusieurs variables explicatives.
+
+		Elle permet de comprendre les variations et de prédire des valeurs.
+
+		Pour deux variables quantitatives, on cherche les coefficients a et b pour minimiser l'erreur sur l'équation : montant = a * attente + b + erreur
+
+		La méthode des moindres carrés est la plus utilisée pour estimer a et b.
+
+		Le coefficient R2 mesure la qualité du modèle.

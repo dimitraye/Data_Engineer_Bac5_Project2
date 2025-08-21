@@ -1,0 +1,77 @@
+Part 4 Chap 6 : Analysez deux variables qualitatives avec le Chi-2
+
+	1. Questions à se poser
+
+		Pour chaque paire de variables qualitatives, on peut se demander :
+
+			Les distributions sont-elles indépendantes ?
+
+			Certaines catégories apparaissent-elles ensemble plus souvent qu’attendu ?
+
+		Exemples :
+
+			Les catégories de dépenses sont-elles les mêmes le week-end et en semaine ?
+
+			Les entrées d’argent sont-elles concentrées en début ou en fin de mois ?
+
+			Certaines catégories d’opérations utilisent toujours le même mode de paiement ?
+
+	2. Représentation : tableau de contingence
+
+		On crée un tableau où chaque case contient le nombre d’individus correspondant à une combinaison de catégories.
+
+		Exemple :
+
+			X = "quart_mois"
+			Y = "categ"
+			cont = data[[X,Y]].pivot_table(index=X, columns=Y, aggfunc=len, margins=True, margins_name="Total")
+			cont
+
+		Remplacer X et Y par les variables à étudier.
+
+	3. Comparer avec l’indépendance
+
+		On calcule pour chaque case ce que l’on attendrait si les deux variables étaient indépendantes.
+
+		Plus la valeur réelle diffère de la valeur attendue, plus il y a de raison de penser à une corrélation.
+
+	4. Mesure de contribution à la non-indépendance
+
+		On calcule un score pour chaque case : plus la différence entre la valeur réelle et la valeur attendue est grande, plus la contribution à la non-indépendance est élevée.
+
+		On peut représenter ce score avec une heatmap pour visualiser facilement les cases importantes.
+
+		Exemple de code pour heatmap :
+		
+			import seaborn as sns
+
+			tx = cont.loc[:, ["Total"]]
+			ty = cont.loc[["Total"], :]
+			n = len(data)
+			indep = tx.dot(ty) / n
+
+			c = cont.fillna(0)
+			measure = (c - indep)**2 / indep
+			xi_n = measure.sum().sum()
+			table = measure / xi_n
+
+			sns.heatmap(table.iloc[:-1, :-1], annot=c.iloc[:-1, :-1])
+			plt.show()
+
+		Les cases foncées montrent les combinaisons de catégories qui contribuent le plus à la non-indépendance.
+
+	5. Test du chi-2
+
+		La somme de toutes les contributions donne le coefficient chi-2.
+
+		Plus ce coefficient est élevé, moins l’indépendance entre les deux variables est probable.
+
+		On peut comparer ce coefficient à un seuil statistique pour décider si la corrélation est significative.
+
+	6. Points clés à retenir
+
+		On utilise le tableau de contingence pour étudier les relations entre deux variables qualitatives.
+
+		La heatmap permet de repérer les cases qui expliquent la non-indépendance.
+
+		Le chi-2 résume globalement la corrélation et permet un test statistique.
